@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('welcome/', welcome),
     path('player/', include('player.urls'))
+    test
 ]
