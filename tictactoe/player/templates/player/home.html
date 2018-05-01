@@ -1,11 +1,18 @@
-<html>
+{% extends "base.html" %}
 
-   <body>
-     Welcome !!
-      <div>
+{% block content %}
+<title>welcome</title>
 
 
-      </div>
-   </body>
 
-</html>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<ul>
+   {% for g in games %}
+    <li>Game {{g.id}} : {{g.first_player}} vs {{g.second_player}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+
