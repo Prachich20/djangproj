@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import  User
+from django.db.models import Q
 
 GAME_STATUS_CHOICES = (
     ('F', 'First Player To Move'),
@@ -9,6 +10,21 @@ GAME_STATUS_CHOICES = (
     ('D', 'Draw')
 )
 # Create your models here.
+
+
+class GamesQuerySet(models.QuerySet):
+    def games_for_user(self,user):
+
+        return self.filter(
+           Q(first_player=user) | Q(second_player=user)
+        )
+
+
+def active(self):
+    return self.filter(
+        Q(status='F') | Q(status='S')
+    )
+
 
 class Game(models.Model):
     first_player = models.ForeignKey(User, related_name="games_first_Player", on_delete=models.CASCADE)
