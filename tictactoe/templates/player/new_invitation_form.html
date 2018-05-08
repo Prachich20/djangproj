@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<title>New Invitation</title>
+
+<form role="form" action="{% url 'player_new_invitation' %}" method="post">
+
+{% csrf_token%}
+    {{htmlform}}
+
+    <button type="submit" class="btn btn-success">send the invitation</button>
+
+</form>
+
+{% endblock %}

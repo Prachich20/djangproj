@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import  User
+from django.contrib.auth.models import User
 from django.db.models import Q
 
 GAME_STATUS_CHOICES = (
@@ -32,6 +32,7 @@ class Game(models.Model):
     start_time = models.DateField(auto_now_add =True)
     last_active = models.DateField(auto_now= True)
     status = models.CharField(max_length=1, default='F', choices=GAME_STATUS_CHOICES,unique=True)
+    objects = GamesQuerySet.as_manager()
 
     def __str__(self):
         return "{0} vs {1}".format(self.first_player,self.second_player)
